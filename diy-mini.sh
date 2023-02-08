@@ -8,10 +8,10 @@
 #===============================================
 
 # 修改默认IP
-# sed -i 's/192.168.1.1/10.0.0.1/g' package/base-files/files/bin/config_generate
+sed -i 's/192.168.2.10/10.0.0.1/g' package/base-files/files/bin/config_generate
 
 # Change default shell to zsh
-# sed -i 's/\/bin\/ash/\/usr\/bin\/zsh/g' package/base-files/files/etc/passwd
+sed -i 's/\/bin\/ash/\/usr\/bin\/zsh/g' package/base-files/files/etc/passwd
 
 # 移除重复软件包
 rm -rf feeds/luci/themes/luci-theme-argon
@@ -29,8 +29,6 @@ svn co https://github.com/lisaac/luci-app-dockerman/trunk/applications/luci-app-
 git clone --depth 1 https://github.com/jerrykuku/luci-app-vssr package/luci-app-vssr
 git clone --depth 1 https://github.com/jerrykuku/lua-maxminddb package/lua-maxminddb
 svn co https://github.com/vernesong/OpenClash/trunk/luci-app-openclash package/luci-app-openclash
-svn co https://github.com/xiaorouji/openwrt-passwall/branches/luci/luci-app-passwall package/luci-app-passwall
-svn co https://github.com/xiaorouji/openwrt-passwall2/trunk/luci-app-passwall2 package/luci-app-passwall2
 svn co https://github.com/fw876/helloworld/trunk/luci-app-ssr-plus package/luci-app-ssr-plus
 
 # 科学上网插件依赖
@@ -112,6 +110,10 @@ sed -i 's/"admin/"admin\/services/g' package/luci-app-dockerman/luasrc/model/*.l
 sed -i 's/"admin/"admin\/services/g' package/luci-app-dockerman/luasrc/model/cbi/dockerman/*.lua
 sed -i 's/"admin/"admin\/services/g' package/luci-app-dockerman/luasrc/view/dockerman/*.htm
 sed -i 's/"admin/"admin\/services/g' package/luci-app-dockerman/luasrc/view/dockerman/cbi/*.htm
+
+# iStore
+svn co https://github.com/linkease/istore-ui/trunk/app-store-ui package/app-store-ui
+svn co https://github.com/linkease/istore/trunk/luci package/istore
 
 # 调整 ZeroTier 到 服务 菜单
 # sed -i '/"VPN"/d' feeds/luci/applications/luci-app-zerotier/luasrc/controller/zerotier.lua
